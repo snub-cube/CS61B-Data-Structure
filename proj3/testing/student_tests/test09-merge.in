@@ -1,0 +1,67 @@
+# test merge
+I definitions.inc
+
+> init
+<<<
+
++ a.txt a.txt
++ b.txt b.txt
++ c.txt c.txt
++ d.txt d.txt
++ e.txt e.txt
+> add a.txt
+<<<
+> add b.txt
+<<<
+> add c.txt
+<<<
+> add d.txt
+<<<
+> add e.txt
+<<<
+> commit "add a b c d e to split point"
+<<<
+
+>branch cool-beans
+<<<
+
++ a.txt modified_a.txt
++ f.txt modified_f.txt
+
+> add a.txt
+<<<
+> add f.txt
+<<<
+> rm c.txt
+<<<
+> rm d.txt
+<<<
+>commit "add !a b e !f to given commit"
+<<<
+
+>checkout cool-beans
+<<<
+
++ b.txt modified_b.txt
++ g.txt g.txt
+> add b.txt
+<<<
+> add g.txt
+<<<
+> rm c.txt
+<<<
+> rm e.txt
+<<<
+>commit "add a !b d g to current commit"
+<<<
+
+>merge master
+<<<
+
+= a.txt modified_a.txt
+= b.txt modified_b.txt
+* c.txt
+* d.txt
+* e.txt
+= f.txt modified_f.txt
+= g.txt g.txt

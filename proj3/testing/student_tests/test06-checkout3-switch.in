@@ -1,0 +1,35 @@
+# Create branches and switch
+> init
+<<<
+> branch cool-beans
+<<<
++ wug.txt wug.txt
++ wug2.txt wug2.txt
+> add wug.txt
+<<<
+> add wug2.txt
+<<<
+> commit "Add files to master"
+<<<
+E wug.txt
+E wug2.txt
+> checkout cool-beans
+<<<
+* wug.txt
+* wug2.txt
+
++ wug.txt wug3.txt
+> add wug.txt
+<<<
+> commit "add wug to cool-beans"
+<<<
+= wug.txt wug3.txt
+* wug2.txt
+> checkout master
+<<<
+= wug.txt wug.txt
+= wug2.txt wug2.txt
+> checkout cool-beans
+<<<
+= wug.txt wug3.txt
+* wug2.txt

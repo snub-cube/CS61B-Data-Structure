@@ -1,0 +1,106 @@
+# test reset
+I definitions.inc
+
+> init
+<<<
+
++ wug.txt wug.txt
+> add wug.txt
+<<<
+> commit "add wug.txt"
+<<<
+
++ wug.txt wug2.txt
++ wug2.txt wug2.txt
+> add wug.txt
+<<<
+> add wug2.txt
+<<<
+> commit "add wug.txt wug2.txt"
+<<<
+
+
++ wug.txt wug3.txt
++ wug2.txt wug3.txt
++ wug3.txt wug3.txt
+> add wug.txt
+<<<
+> add wug2.txt
+<<<
+> add wug3.txt
+<<<
+> commit "add wug.txt wug2.txt wug3.txt"
+<<<
+
+
+
+>log
+===
+${COMMIT_HEAD}
+add wug.txt wug2.txt wug3.txt
+
+===
+${COMMIT_HEAD}
+add wug.txt wug2.txt
+
+===
+${COMMIT_HEAD}
+add wug.txt
+
+===
+${COMMIT_HEAD}
+initial commit
+
+<<<*
+# UID of add wug.txt wug2.txt wug3.txt
+D UID3 "${1}"
+
+# UID of add wug.txt wug2.txt
+D UID2 "${2}"
+
+# UID of add wug.txt
+D UID1 "${3}"
+
+# UID of initial commit
+D UID0 "${4}"
+
+
+E wug.txt
+E wug2.txt
+E wug3.txt
+
+>reset ${UID1}
+<<<
+= wug.txt wug.txt
+* wug2.txt
+* wug3.txt
+
+>reset ${UID2}
+<<<
+= wug.txt wug2.txt
+= wug2.txt wug2.txt
+* wug3.txt
+
+>reset ${UID3}
+<<<
+= wug.txt wug3.txt
+= wug2.txt wug3.txt
+= wug3.txt wug3.txt
+
+>reset ${UID0}
+<<<
+* wug2.txt
+* wug3.txt
+* wug.txt
+
+#report error
+>reset --------
+No commit with that id exists.
+<<<*
+
++ wug.txt wug.txt
+>reset ${UID3}
+There is an untracked file in the way; delete it, or add and commit it first.
+<<<*
+
+

@@ -1,0 +1,60 @@
+# test branch
+I definitions.inc
+
+> init
+<<<
+
++ wug.txt wug.txt
+> add wug.txt
+<<<
+> commit "version1 wug.txt to master"
+<<<
+
+>branch cool-beans
+<<<
+
+>checkout cool-beans
+<<<
+
+= wug.txt wug.txt
+
+>status
+=== Branches ===
+\*cool-beans
+master
+
+${ARBLINES}
+<<<*
+
++ wug.txt wug2.txt
+> add wug.txt
+<<<
+
+> commit "version2 wug.txt to cool-beans"
+<<<
+
+>checkout master
+<<<
+= wug.txt wug.txt
+
+>status
+=== Branches ===
+cool-beans
+\*master
+
+${ARBLINES}
+<<<*
+
++ wug.txt wug3.txt
+> add wug.txt
+<<<
+> commit "version3 wug.txt to master"
+<<<
+
+>checkout cool-beans
+<<<
+= wug.txt wug2.txt
+
+>checkout master
+<<<
+= wug.txt wug3.txt

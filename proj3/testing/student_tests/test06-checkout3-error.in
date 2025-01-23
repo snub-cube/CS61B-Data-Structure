@@ -1,0 +1,60 @@
+# check out by branch
+#I definitions.inc
+> init
+<<<
+#add file to master commit
++ wug.txt wug.txt
+> add wug.txt
+<<<
+> commit "added wug.txt to current (master)"
+<<<
+
+#make a new branch that point current commit
+> branch newBranch
+<<<
+
+#add file to master commit
++ wug.txt wug2.txt
+> add wug.txt
+<<<
+> commit "added wug.txt to current (master)"
+<<<
+
+#report error
+>checkout master
+No need to checkout the current branch.
+<<<*
+
+#report error
+>checkout No_such_branch
+No such branch exists.
+<<<*
+
+#delet file that tracked in newBranch
+- wug.txt
+* wug.txt
+
+#check out wug.txt should be same content with wug.txt
+>checkout newBranch
+<<<
+E wug.txt
+= wug.txt wug.txt
+
+#add file to add stage
++ a.txt wug.txt
+> add a.txt
+<<<
+#add file to rm stage
++ b.txt wug2.txt
+> rm wug.txt
+<<<
+
+#check out wug.txt should be same content with wug2.txt
+>checkout master
+<<<
+= wug.txt wug2.txt
+
+#check out3 clear stage
+> commit "will report err"
+No changes added to the commit.
+<<<*

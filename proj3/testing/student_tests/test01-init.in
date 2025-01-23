@@ -1,0 +1,14 @@
+# Basic initialization
+>
+Please enter a command.
+<<<*
+>xxxxxxx
+No command with that name exists.
+<<<*
+
+> init
+<<<
+E .gitlet
+> init
+A Gitlet version-control system already exists in the current directory.
+<<<*

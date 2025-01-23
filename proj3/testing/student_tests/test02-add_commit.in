@@ -1,0 +1,54 @@
+# A simple test of adding, committing
+I definitions.inc
+> init
+<<<
+> add wug.txt
+File does not exist.
+<<<*
+
++ wug.txt wug.txt
+
+# add file to stage
+> add wug.txt
+<<<
+> status
+=== Branches ===
+\*master
+
+=== Staged Files ===
+wug.txt
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+${ARBLINES}
+
+<<<*
+
+>commit
+Please enter a commit message.
+<<<*
+
+> commit "added wug"
+<<<
+
+#add same file again,but cannot stage
+> add wug.txt
+<<<
+
+> status
+=== Branches ===
+\*master
+
+=== Staged Files ===
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+${ARBLINES}
+
+<<<*

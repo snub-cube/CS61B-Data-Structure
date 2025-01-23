@@ -1,0 +1,67 @@
+# test branch rm-branch
+I definitions.inc
+
+> init
+<<<
+
+> branch Branch_A
+<<<
+> branch Branch_B
+<<<
+
+> status
+=== Branches ===
+Branch_A
+Branch_B
+\*master
+
+=== Staged Files ===
+${ARBLINES}
+<<<*
+
++ wug.txt wug.txt
+> add wug.txt
+<<<
+> commit "added wug.txt"
+<<<
+
+> branch Branch_C
+<<<
+
+> status
+=== Branches ===
+Branch_A
+Branch_B
+Branch_C
+\*master
+
+=== Staged Files ===
+${ARBLINES}
+<<<*
+
+> rm-branch Branch_C
+<<<
+> rm-branch Branch_B
+<<<
+
+> status
+=== Branches ===
+Branch_A
+\*master
+
+=== Staged Files ===
+${ARBLINES}
+<<<*
+
+#REPORT ERROR
+> branch Branch_A
+A branch with that name already exists.
+<<<*
+
+> rm-branch Branch_B
+A branch with that name does not exist.
+<<<*
+
+> rm-branch master
+Cannot remove the current branch.
+<<<*

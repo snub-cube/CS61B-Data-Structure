@@ -1,0 +1,66 @@
+# A simple test of rm
+
+I definitions.inc
+> init
+<<<
+
+#can not remove a file  that is neither staged nor tracked by the head commit, report error
+> rm wug.txt
+No reason to remove the file.
+<<<*
+
++ wug.txt wug.txt
+> add wug.txt
+<<<
+
+# remove form stage
+> rm wug.txt
+<<<
+>status
+=== Branches ===
+\*master
+
+=== Staged Files ===
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+${ARBLINES}
+
+<<<*
+
++ wug.txt wug.txt
+> add wug.txt
+<<<
+> commit "added wug"
+<<<
+
+# remove form current commit
+> rm wug.txt
+<<<
+>status
+=== Branches ===
+\*master
+
+=== Staged Files ===
+
+=== Removed Files ===
+wug.txt
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+${ARBLINES}
+<<<*
+
+# wug.txt be removed from work DIR
+* wug.txt
+
+> commit "rm wug"
+<<<
+
+>checkout -- wug.txt
+File does not exist in that commit.
+<<<*

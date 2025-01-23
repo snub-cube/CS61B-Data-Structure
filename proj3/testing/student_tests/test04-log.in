@@ -1,0 +1,36 @@
+# A simple test of log / global-log without Merge
+
+I definitions.inc
+> init
+<<<
+
++ wug.txt wug.txt
+> add wug.txt
+<<<
+> commit "added wug.txt"
+<<<
+
++ wug2.txt wug2.txt
+> add wug2.txt
+<<<
+> commit "added wug2.txt"
+<<<
+
+>log
+===
+${COMMIT_HEAD}
+added wug2.txt
+
+===
+${COMMIT_HEAD}
+added wug.txt
+
+===
+${COMMIT_HEAD}
+initial commit
+
+<<<*
+
+>global-log
+${COMMIT_LOG}
+<<<*

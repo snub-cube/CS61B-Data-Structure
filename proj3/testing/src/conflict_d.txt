@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+And yet another wug.
+=======
+Another wug.
+>>>>>>>

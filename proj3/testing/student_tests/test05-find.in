@@ -1,0 +1,45 @@
+# Test the find command
+I definitions.inc
+> init
+<<<
++ wug.txt wug.txt
++ wug2.txt wug2.txt
+> add wug.txt
+<<<
+> add wug2.txt
+<<<
+> commit "Add files"
+<<<
+> rm wug2.txt
+<<<
+> commit "Remove file"
+<<<
+> log
+===
+${COMMIT_HEAD}
+Remove file
+
+===
+${COMMIT_HEAD}
+Add files
+
+===
+${COMMIT_HEAD}
+initial commit
+
+<<<*
+D UID1 "${3}"
+D UID2 "${2}"
+D UID3 "${1}"
+
+> find "Remove file"
+${UID3}
+<<<*
+> find "Add files"
+${UID2}
+<<<*
+
+# report error
+>find "No EXIST"
+Found no commit with that message.
+<<<*

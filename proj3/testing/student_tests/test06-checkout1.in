@@ -1,0 +1,19 @@
+# check out by filename
+> init
+<<<
+
++ wug.txt wug.txt
+> add wug.txt
+<<<
+> commit "added wug"
+<<<
++ wug.txt notwug.txt
+# Must change
+> checkout -- wug.txt
+<<<
+= wug.txt wug.txt
+
+# checkout a untracked file,report error
+> checkout -- file_not_exist.txt
+File does not exist in that commit.
+<<<*
